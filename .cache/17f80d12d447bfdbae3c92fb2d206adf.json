@@ -1,0 +1,1 @@
+{"dependencies":[],"generated":{"js":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n// Detect Node env\nconst isNodeEnv = exports.isNodeEnv = () => typeof window === 'undefined' || typeof document === 'undefined';"},"hash":"7c6e24ef4becc49b3a366662ee2b7c90"}
