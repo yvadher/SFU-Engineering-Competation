@@ -3,6 +3,7 @@ import 'p5/lib/addons/p5.sound';
 import 'p5/lib/addons/p5.dom';
 import * as constants from './constants';
 import { width } from './constants';
+
 //asdfhl
 
 // Sketch scope
@@ -30,15 +31,8 @@ const sketch = (p5) => {
   // Draw function
   p5.draw = () => {
 
-      for (let i =0 ; i<Tracks.length ; i++){
-        Tracks[i].show();
-      } 
 
-
-      for (let i =0 ; i<Trains.length ; i++){
-        Trains[i].show();
-        Trains[i].update(Trains);
-      }
+     
   }
 }
 
