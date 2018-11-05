@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({16:[function(require,module,exports) {
+})({10:[function(require,module,exports) {
 'use strict'
 
 exports.byteLength = byteLength
@@ -185,7 +185,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],14:[function(require,module,exports) {
+},{}],11:[function(require,module,exports) {
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -271,14 +271,14 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],15:[function(require,module,exports) {
+},{}],12:[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],11:[function(require,module,exports) {
+},{}],9:[function(require,module,exports) {
 
 var global = (1,eval)("this");
 /*!
@@ -2071,7 +2071,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":16,"ieee754":14,"isarray":15,"buffer":11}],12:[function(require,module,exports) {
+},{"base64-js":10,"ieee754":11,"isarray":12,"buffer":9}],8:[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {};
@@ -2258,7 +2258,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],7:[function(require,module,exports) {
+},{}],6:[function(require,module,exports) {
 var global = (1,eval)("this");
 var Buffer = require("buffer").Buffer;
 var process = require("process");
@@ -73668,7 +73668,7 @@ module.exports = p5;
 
 },{"../core/core":55,"./p5.Geometry":102}]},{},[46])(46)
 });
-},{"buffer":11,"process":12}],17:[function(require,module,exports) {
+},{"buffer":9,"process":8}],19:[function(require,module,exports) {
 /*! p5.sound.js v0.3.5 2017-07-28 */
 /**
  *  p5.sound extends p5 with <a href="http://caniuse.com/audio-api"
@@ -84190,7 +84190,7 @@ src_app = function () {
 }(sndcore, master, helpers, errorHandler, panner, soundfile, amplitude, fft, signal, oscillator, env, pulse, noise, audioin, filter, delay, reverb, metro, looper, compressor, soundRecorder, peakdetect, gain, distortion);
 }));
 
-},{"../p5":7}],18:[function(require,module,exports) {
+},{"../p5":6}],18:[function(require,module,exports) {
 /*! p5.dom.js v0.3.4 Aug 11, 2017 */
 /**
  * <p>The web is much more than just canvas and p5.dom makes it easy to interact
@@ -86728,7 +86728,7 @@ src_app = function () {
 
 }));
 
-},{"../p5":7}],6:[function(require,module,exports) {
+},{"../p5":6}],13:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -86736,7 +86736,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 const width = exports.width = 1000;
 const height = exports.height = 800;
-},{}],19:[function(require,module,exports) {
+},{}],20:[function(require,module,exports) {
 var global = (1,eval)("this");
 /*!
 * sweetalert2 v7.28.11
@@ -89379,7 +89379,7 @@ return Swal;
 })));
 if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.28.11';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
 
-},{}],8:[function(require,module,exports) {
+},{}],14:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89402,9 +89402,9 @@ class background {
 
 }
 exports.default = background;
-},{}],13:[function(require,module,exports) {
+},{}],17:[function(require,module,exports) {
 module.exports="/dist/4b7328d962d5b127c604cd861acd887e.png";
-},{}],9:[function(require,module,exports) {
+},{}],15:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89425,13 +89425,56 @@ class robot {
     this.pos = { x: 20, y: 60 };
     this.img = p5.loadImage(_Giant_Mine_Truck2.default);
   }
+
   draw() {
     p5.image(this.img, this.pos.x, this.pos.y, width * 0.18, height * 0.2);
     console.log("Just testing");
   }
+  move() {
+    console.log("Moving" + this.pos.x);
+    var moveSpeed = Math.random() * 2;
+    if (this.pos.x >= width - 200 || this.pos.y >= height - 200) {
+      moveSpeed = -moveSpeed;
+    } else if (this.pos.x < 0) {
+      moveSpeed = -moveSpeed;
+    }
+    this.pos.x += moveSpeed;
+    this.pos.y += moveSpeed;
+  }
 }
 exports.default = robot;
-},{"../../assets/Giant_Mine_Truck.png":13}],10:[function(require,module,exports) {
+},{"../../assets/Giant_Mine_Truck.png":17}],26:[function(require,module,exports) {
+module.exports="/dist/b120e0bae019d1b08f4b1d658272c0bd.png";
+},{}],16:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _mine = require("../../assets/mine.png");
+
+var _mine2 = _interopRequireDefault(_mine);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const width = 1000;
+const height = 700;
+
+class mine {
+  constructor(x, y) {
+    console.log(_mine2.default);
+    this.pos = { x: x, y: y };
+    this.img = p5.loadImage(_mine2.default);
+  }
+
+  draw() {
+    p5.image(this.img, this.pos.x, this.pos.y, width * 0.18, height * 0.2);
+  }
+
+}
+exports.default = mine;
+},{"../../assets/mine.png":26}],7:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -89494,13 +89537,13 @@ function reloadCSS() {
 
 module.exports = reloadCSS;
 
-},{"./bundle-url":10}],20:[function(require,module,exports) {
+},{"./bundle-url":7}],21:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"_css_loader":5}],4:[function(require,module,exports) {
+},{"_css_loader":5}],3:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -89531,6 +89574,10 @@ var _robot = require("./components/robot");
 
 var _robot2 = _interopRequireDefault(_robot);
 
+var _mine = require("./components/mine");
+
+var _mine2 = _interopRequireDefault(_mine);
+
 require("sweetalert2/src/sweetalert2.scss");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -89552,6 +89599,9 @@ const sketch = p5 => {
 
   var robotObj = new _robot2.default();
   var bg = new _background2.default();
+  var mineObj = new _mine2.default(50, 80);
+  var mineObj2 = new _mine2.default(440, 543);
+  var mineObj3 = new _mine2.default(440, 100);
   p5.setup = () => {
     let canvas = p5.createCanvas(canvasWidth, canvasHeight);
     canvas.parent('canvas');
@@ -89569,7 +89619,6 @@ const sketch = p5 => {
         confirmButtonAriaLabel: 'Thumbs up, great!'
       });
     }, 1000);
-
     bg.show();
     robotObj.draw();
   };
@@ -89577,13 +89626,16 @@ const sketch = p5 => {
   // Draw function
   p5.draw = () => {
     bg.show();
+    mineObj.draw();
+    mineObj2.draw();
+    mineObj3.draw();
     robotObj.move();
     robotObj.draw();
   };
 };
 
 exports.default = sketch;
-},{"p5":7,"p5/lib/addons/p5.sound":17,"p5/lib/addons/p5.dom":18,"./constants":6,"sweetalert2/dist/sweetalert2.js":19,"./components/background":8,"./components/robot":9,"sweetalert2/src/sweetalert2.scss":20}],3:[function(require,module,exports) {
+},{"p5":6,"p5/lib/addons/p5.sound":19,"p5/lib/addons/p5.dom":18,"./constants":13,"sweetalert2/dist/sweetalert2.js":20,"./components/background":14,"./components/robot":15,"./components/mine":16,"sweetalert2/src/sweetalert2.scss":21}],4:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
@@ -89606,7 +89658,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Initialize sketch
 new _p2.default(_sketch2.default);
-},{"p5":7,"./js/sketch":4,"./styles/main.css":3}],0:[function(require,module,exports) {
+},{"p5":6,"./js/sketch":3,"./styles/main.css":4}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -89624,7 +89676,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':57654/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':59710/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

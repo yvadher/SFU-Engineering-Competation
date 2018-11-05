@@ -8,8 +8,9 @@ import swal from 'sweetalert2/dist/sweetalert2.js'
 import background from './components/background';
 
 import robot from './components/robot';
+import mine from './components/mine';
 
-import 'sweetalert2/src/sweetalert2.scss'
+import 'sweetalert2/src/sweetalert2.scss';
 
 //asdfhl
 
@@ -26,6 +27,9 @@ const sketch = (p5) => {
 
   var robotObj = new robot();
   var bg = new background();
+  var mineObj = new mine(50,80);
+  var mineObj2 = new mine(440,543);
+  var mineObj3 = new mine(440,100);
   p5.setup = () => {
     let canvas = p5.createCanvas(canvasWidth, canvasHeight);
     canvas.parent('canvas');
@@ -45,7 +49,6 @@ const sketch = (p5) => {
         confirmButtonAriaLabel: 'Thumbs up, great!'
       })
     }, 1000);
-    
     bg.show();
     robotObj.draw();
   }
@@ -53,10 +56,11 @@ const sketch = (p5) => {
   // Draw function
   p5.draw = () => {
     bg.show();
+    mineObj.draw();
+    mineObj2.draw();
+    mineObj3.draw();
     robotObj.move();
     robotObj.draw();
-
-     
   }
 }
 
